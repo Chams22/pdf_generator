@@ -1,43 +1,51 @@
 {
-    "name": "PDF Generator",
-    "icon_url": "https://yourwebsite.com/icon.png",
-    "auth": {
-        "type": "none"
+  "name": "PDF Generator",
+  "icon_url": "https://chams22.github.io/pdf_generator/icon.png",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "PDF Generator API",
+      "version": "1.0"
     },
-    "api": {
-        "openapi": "3.0.0",
-        "info": {
-            "title": "PDF Generator API",
-            "version": "1.0"
-        },
-        "paths": {
-            "/generate_pdf": {
-                "post": {
-                    "summary": "Generate a PDF",
-                    "requestBody": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "prompt": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "prompt"
-                                    ]
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "PDF generated successfully"
-                        }
+    "servers": [
+      {
+        "url": "https://chams22.github.io/pdf_generator"
+      }
+    ],
+    "paths": {
+      "/generate_pdf": {
+        "post": {
+          "summary": "Generate a PDF",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
                     }
+                  },
+                  "required": [
+                    "text"
+                  ]
                 }
+              }
             }
+          },
+          "responses": {
+            "200": {
+              "description": "PDF generated successfully",
+              "content": {
+                "application/pdf": {}
+              }
+            }
+          }
         }
+      }
     }
+  }
 }
